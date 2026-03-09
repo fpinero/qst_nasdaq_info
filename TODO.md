@@ -17,14 +17,14 @@
 
 ## hito 2. capa HTTP o browser con evasión de bloqueos
 
-- [ ] Implementar generador rotativo de User-Agent con lista controlada y validada (`feature/ua-rotation`).
-- [ ] Implementar rotación de cabeceras realistas (`Accept`, `Accept-Language`, `Referer`, etc.) (`feature/header-rotation`).
-- [ ] Implementar cliente HTTP con timeout, retries y backoff exponencial con jitter (`feature/http-client-resilient`).
-- [ ] Añadir delay aleatorio corto entre solicitudes para reducir patrón bot (`feature/polite-random-delay`).
-- [ ] Implementar detector de bloqueo (`403`, `429`, challenge pages, contenido vacío anómalo) (`feature/block-detection`).
-- [ ] Implementar fallback opcional a Playwright con contexto variable (`viewport`, `locale`, `timezone`) (`feature/playwright-fallback-context`).
-- [ ] Integrar modo stealth en Playwright y validación básica de carga (`feature/playwright-stealth`).
-- [ ] Exponer configuración de red y anti-bot por parámetros sin hardcodear secretos (`feature/network-config-surface`).
+- [x] Implementar generador rotativo de User-Agent con lista controlada y validada (`feature/ua-rotation`).
+- [x] Implementar rotación de cabeceras realistas (`Accept`, `Accept-Language`, `Referer`, etc.) (`feature/header-rotation`).
+- [x] Implementar cliente HTTP con timeout, retries y backoff exponencial con jitter (`feature/http-client-resilient`).
+- [x] Añadir delay aleatorio corto entre solicitudes para reducir patrón bot (`feature/polite-random-delay`).
+- [x] Implementar detector de bloqueo (`403`, `429`, challenge pages, contenido vacío anómalo) (`feature/block-detection`).
+- [x] Implementar fallback opcional a Playwright con contexto variable (`viewport`, `locale`, `timezone`) (`feature/playwright-fallback-context`).
+- [x] Integrar modo stealth en Playwright y validación básica de carga (`feature/playwright-stealth`).
+- [x] Exponer configuración de red y anti-bot por parámetros sin hardcodear secretos (`feature/network-config-surface`).
 
 ## hito 3. parsing de datos de cotización
 
