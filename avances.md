@@ -1,5 +1,23 @@
 Fecha: 2026-03-09
 Hecho:
+- Se inició hito 5 y se consolidó `get_ticker_data` como API pública estable del paquete.
+- Se mejoraron mensajes de error accionables para fallos de red y payload (`ConnectionError`, `ElementNotFoundError`, `ParsingError`).
+- Se documentó explícitamente el contrato público en `docs/public_api_contract.md`.
+- Se dejó explícito en docstring de la API que la librería no implementa caché interna.
+Archivos tocados:
+- src/nasdaq_scraper/scraper.py
+- docs/public_api_contract.md
+- TODO.md
+- avances.md
+Decisiones:
+- Mantener `get_ticker_data` como único punto de entrada de consumo externo.
+- Exponer errores específicos con contexto de ticker para facilitar debug en la app padre.
+- Mantener política de datos frescos, sin Redis ni cache local en esta librería.
+Deuda técnica / pendientes:
+- Avanzar con hito 6 para cubrir el contrato público con tests unitarios e integración.
+
+Fecha: 2026-03-09
+Hecho:
 - Se ajustó el hito 4 con workaround explícito para tablas ETF renderizadas por JavaScript.
 - Se instalaron dependencias browser en entorno virtual (`.venv`) y navegadores Playwright (`chromium`, `firefox`) para validar extracción dinámica real.
 - Se detectó y resolvió incompatibilidad de `playwright-stealth` usando API moderna basada en `Stealth().apply_stealth_sync`.

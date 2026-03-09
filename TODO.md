@@ -46,11 +46,11 @@
 
 ## hito 5. API pública de la librería
 
-- [ ] Implementar `get_ticker_data(ticker: str) -> dict` como punto único de entrada (`feature/public-api-get-ticker-data`).
-- [ ] Añadir validación de input de ticker (normalización a minúsculas, caracteres permitidos) (`feature/ticker-input-validation`).
-- [ ] Orquestar flujo completo `fetch -> parse -> validate -> build output JSON` (`feature/orchestrate-scraping-pipeline`).
-- [ ] Garantizar ausencia de caché interna (sin Redis ni almacenamiento local) (`feature/no-cache-guarantee`).
-- [ ] Documentar errores lanzados por la API pública con mensajes accionables (`feature/public-error-contract`).
+- [x] Implementar `get_ticker_data(ticker: str) -> dict` como punto único de entrada (`feature/public-api-get-ticker-data`).
+- [x] Añadir validación de input de ticker (normalización a minúsculas, caracteres permitidos) (`feature/ticker-input-validation`).
+- [x] Orquestar flujo completo `fetch -> parse -> validate -> build output JSON` (`feature/orchestrate-scraping-pipeline`).
+- [x] Garantizar ausencia de caché interna (sin Redis ni almacenamiento local) (`feature/no-cache-guarantee`).
+- [x] Documentar errores lanzados por la API pública con mensajes accionables (`feature/public-error-contract`).
 
 ## hito 6. calidad y pruebas
 

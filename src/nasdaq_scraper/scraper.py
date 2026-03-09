@@ -25,6 +25,14 @@ def get_ticker_data(ticker: str, *, transport_config: TransportConfig | None = N
 
     Returns quote metrics and ETF holdings extracted from two Nasdaq tables when
     they are available.
+
+    This function is the public API entrypoint of the library and always fetches
+    fresh data from Nasdaq. It does not implement Redis or in-process caching.
+
+    Raises:
+        ParsingError: For invalid ticker format or malformed numeric values.
+        ElementNotFoundError: When required response fields are missing.
+        ConnectionError: When network access to required Nasdaq endpoints fails.
     """
     normalized_ticker = _normalize_ticker(ticker)
     ticker_upper = normalized_ticker.upper()
@@ -70,23 +78,32 @@ def _normalize_ticker(ticker: str) -> str:
 def _fetch_quote_info_payload(client: NasdaqHttpClient, ticker: str) -> dict[str, Any]:
     """Fetch and decode quote info payload from Nasdaq API."""
     url = f"https://api.nasdaq.com/api/quote/{ticker}/info?assetclass=STOCKS"
-    response = client.get(
-        url,
-        extra_headers={
-            "Accept": "application/json, text/plain, */*",
-            "Origin": "https://www.nasdaq.com",
-            "Referer": f"https://www.nasdaq.com/market-activity/stocks/{ticker.lower()}",
-        },
-    )
+    try:
+        response = client.get(
+            url,
+            extra_headers={
+                "Accept": "application/json, text/plain, */*",
+                "Origin": "https://www.nasdaq.com",
+                "Referer": f"https://www.nasdaq.com/market-activity/stocks/{ticker.lower()}",
+            },
+        )
+    except ConnectionError as error:
+        raise ConnectionError(
+            f"Failed to fetch quote info for ticker '{ticker}' from Nasdaq API"
+        ) from error
 
     try:
         decoded = json.loads(response.body)
     except json.JSONDecodeError as error:
-        raise ParsingError("Quote API response is not valid JSON") from error
+        raise ParsingError(
+            f"Quote API response is not valid JSON for ticker '{ticker}'"
+        ) from error
 
     data = decoded.get("data")
     if not isinstance(data, dict):
-        raise ElementNotFoundError("Missing 'data' object in quote API response")
+        raise ElementNotFoundError(
+            f"Missing 'data' object in quote API response for ticker '{ticker}'"
+        )
     return data
 
 
