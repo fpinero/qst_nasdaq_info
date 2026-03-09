@@ -28,11 +28,11 @@
 
 ## hito 3. parsing de datos de cotización
 
-- [ ] Implementar parser de precio (`price`) robusto a moneda, separadores y espacios (`feature/extract-price`).
-- [ ] Implementar parser de cambio absoluto (`change`) soportando `+` y `-` (`feature/extract-change`).
-- [ ] Implementar parser de porcentaje (`change_percent`) removiendo `%` y normalizando a float (`feature/extract-change-percent`).
-- [ ] Implementar normalizadores numéricos reutilizables (`parse_money`, `parse_percent`) (`feature/number-normalizers`).
-- [ ] Añadir validación de sanidad para campos de cotización y errores explícitos si faltan (`feature/quote-validation`).
+- [x] Implementar parser de precio (`price`) robusto a moneda, separadores y espacios (`feature/extract-price`).
+- [x] Implementar parser de cambio absoluto (`change`) soportando `+` y `-` (`feature/extract-change`).
+- [x] Implementar parser de porcentaje (`change_percent`) removiendo `%` y normalizando a float (`feature/extract-change-percent`).
+- [x] Implementar normalizadores numéricos reutilizables (`parse_money`, `parse_percent`) (`feature/number-normalizers`).
+- [x] Añadir validación de sanidad para campos de cotización y errores explícitos si faltan (`feature/quote-validation`).
 
 ## hito 4. parsing de tablas ETF y unificación
 
