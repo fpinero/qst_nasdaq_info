@@ -63,12 +63,12 @@
 
 ## hito 7. entregables finales y experiencia de uso
 
-- [ ] Escribir `README.md` en inglés con instalación, uso, errores y notas de Playwright (`feature/readme-english`).
-- [ ] Crear `example.py` que invoque `get_ticker_data("baba")` e imprima JSON (`feature/add-example-script`).
-- [ ] Añadir instrucciones de instalación de navegadores Playwright si se habilita fallback browser (`feature/playwright-install-docs`).
-- [ ] Generar `requirements.txt` o mantener dependencias solo en `pyproject.toml` y dejar una decisión única y consistente (`feature/dependencies-finalize`).
-- [ ] Añadir guía breve de troubleshooting de scraping y logging en README (`feature/docs-troubleshooting`).
-- [ ] Preparar checklist de release local: tests, ejemplo funcional, paquete importable (`feature/release-readiness-checklist`).
+- [x] Escribir `README.md` en inglés con instalación, uso, errores y notas de Playwright (`feature/readme-english`).
+- [x] Crear `example.py` que invoque `get_ticker_data("baba")` e imprima JSON (`feature/add-example-script`).
+- [x] Añadir instrucciones de instalación de navegadores Playwright si se habilita fallback browser (`feature/playwright-install-docs`).
+- [x] Generar `requirements.txt` o mantener dependencias solo en `pyproject.toml` y dejar una decisión única y consistente (`feature/dependencies-finalize`).
+- [x] Añadir guía breve de troubleshooting de scraping y logging en README (`feature/docs-troubleshooting`).
+- [x] Preparar checklist de release local: tests, ejemplo funcional, paquete importable (`feature/release-readiness-checklist`).
 
 ## hito 8. estrategia de ramas y commits
 

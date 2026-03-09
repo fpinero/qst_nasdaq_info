@@ -1,5 +1,24 @@
 Fecha: 2026-03-09
 Hecho:
+- Se inició hito 7 y se completaron entregables de documentación y experiencia de uso.
+- Se reescribió `README.md` en inglés con instalación, setup de Playwright, uso, contrato de salida, errores y troubleshooting.
+- Se añadió `example.py` para ejecutar `get_ticker_data("baba")` y mostrar JSON formateado.
+- Se documentó checklist de release local en `docs/release_checklist.md`.
+- Se definió de forma explícita que `pyproject.toml` es la única fuente de verdad de dependencias.
+Archivos tocados:
+- README.md
+- example.py
+- docs/release_checklist.md
+- TODO.md
+- avances.md
+Decisiones:
+- Mantener dependencias centralizadas solo en `pyproject.toml` para evitar drift con un `requirements.txt` duplicado.
+- Mantener setup browser documentado (`chromium`, `firefox`) como paso recomendado para extracción ETF estable.
+Deuda técnica / pendientes:
+- Iniciar hito 8 con documentación del flujo de ramas y estándares de PR/commits.
+
+Fecha: 2026-03-09
+Hecho:
 - Se inició y completó el hito 6 con una base de calidad y pruebas para el scraper.
 - Se añadieron tests unitarios de parsing numérico en `tests/unit/test_parsing.py`.
 - Se añadieron tests unitarios del parser ETF con fixture hidratada en `tests/unit/test_etf_parser.py` y `tests/fixtures/etf_tables_hydrated.html`.
