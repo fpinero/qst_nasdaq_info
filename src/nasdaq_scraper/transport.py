@@ -7,7 +7,7 @@ import gzip
 import importlib
 import random
 import time
-from typing import Mapping
+from typing import Mapping, cast
 import zlib
 from urllib.error import HTTPError
 from urllib.error import URLError
@@ -346,7 +346,7 @@ def fetch_with_playwright_fallback(
                     )
 
                 page.wait_for_load_state("networkidle", timeout=wait_timeout_ms)
-                html = page.content()
+                html = cast(str, page.content())
 
                 context.close()
                 browser.close()
