@@ -72,6 +72,6 @@
 
 ## hito 8. estrategia de ramas y commits
 
-- [ ] Definir convención de ramas por tarea atómica (`feature/<scope>`) (`feature/git-workflow-definition`).
-- [ ] Definir plantilla de commit messages en inglés (`feat`, `fix`, `chore`, `docs`, `test`) (`feature/commit-template-english`).
-- [ ] Definir criterios de PR por tarea: alcance pequeño, evidencia de prueba, sin mezcla de responsabilidades (`feature/pr-quality-rules`).
+- [x] Definir convención de ramas por tarea atómica (`feature/<scope>`) (`feature/git-workflow-definition`).
+- [x] Definir plantilla de commit messages en inglés (`feat`, `fix`, `chore`, `docs`, `test`) (`feature/commit-template-english`).
+- [x] Definir criterios de PR por tarea: alcance pequeño, evidencia de prueba, sin mezcla de responsabilidades (`feature/pr-quality-rules`).

@@ -83,6 +83,10 @@ This library does not implement internal caching. It always fetches fresh data. 
 
 Dependencies are managed in `pyproject.toml`. No separate `requirements.txt` is maintained to avoid duplicate dependency declarations.
 
+## Development workflow
+
+Branching, commit, and PR conventions are documented in `docs/workflow_standards.md`.
+
 ## Troubleshooting
 
 - **ETF list is empty**: install browser extras and run `python -m playwright install chromium firefox`.
