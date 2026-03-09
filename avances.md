@@ -1,5 +1,31 @@
 Fecha: 2026-03-09
 Hecho:
+- Se completó el hito 1 con reconnaissance automatizada para `baba`, `aapl` y `msft`.
+- Se implementó `src/nasdaq_scraper/recon.py` para inspección de renderizado, extracción de `ApiSettings` embebidos y sondeo de endpoints de quote.
+- Se añadió `scripts/recon_nasdaq.py` para generar reportes reproducibles en JSON y Markdown.
+- Se generaron artefactos de reconnaissance en `docs/reconnaissance/findings.json` y `docs/reconnaissance/findings.md`.
+- Se documentaron selectores candidatos y estrategia técnica en `docs/reconnaissance/selector_map.md` y `docs/reconnaissance/strategy.md`.
+- Se verificó que `https://api.nasdaq.com/api/quote/{SYMBOL}/info?assetclass=STOCKS` responde con JSON útil para `price`, `change` y `change_percent`.
+Archivos tocados:
+- src/nasdaq_scraper/recon.py
+- src/nasdaq_scraper/__init__.py
+- scripts/recon_nasdaq.py
+- docs/reconnaissance/findings.json
+- docs/reconnaissance/findings.md
+- docs/reconnaissance/selector_map.md
+- docs/reconnaissance/strategy.md
+- docs/package_architecture.md
+- TODO.md
+- avances.md
+Decisiones:
+- Estrategia para cotización: API-first usando `api.nasdaq.com`, con HTML como fallback estructural.
+- Estrategia para ETFs: mantener selectores por encabezado como fallback, pero priorizar descubrimiento dinámico adicional con browser/network capture si no aparecen en HTML estático.
+- Se detectó que `qcapi.nasdaq.com` devuelve 403 desde cliente directo, por lo que se usará `api.nasdaq.com` en la implementación.
+Deuda técnica / pendientes:
+- Iniciar hito 2 con capa de transporte robusta (headers rotativos, retry/backoff, detección de bloqueo y delays).
+
+Fecha: 2026-03-09
+Hecho:
 - Se completó el hito 0 del plan.
 - Se creó la base de la librería en `src/nasdaq_scraper/` con módulos separados por responsabilidad.
 - Se añadió `pyproject.toml` con configuración de empaquetado, dependencias base y extras (`browser`, `dev`).

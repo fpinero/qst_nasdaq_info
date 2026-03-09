@@ -1,0 +1,301 @@
+{
+  "results": [
+    {
+      "ticker": "baba",
+      "page_url": "https://www.nasdaq.com/es/market-activity/stocks/baba",
+      "page_status_code": 200,
+      "html_size": 285942,
+      "has_quote_component": true,
+      "has_quote_skeleton": true,
+      "has_price_literal": false,
+      "has_etf_heading_in_html": false,
+      "api_settings_hosts": [
+        "https://api.nasdaq.com/api/nordic",
+        "https://qcapi.nasdaq.com/api"
+      ],
+      "discovered_quote_endpoints": [
+        "https://api.nasdaq.com/api/quote/BABA/info?assetclass=STOCKS",
+        "https://api.nasdaq.com/api/quote/BABA/summary?assetclass=STOCKS"
+      ],
+      "api_probes": [
+        {
+          "endpoint_name": "info",
+          "url": "https://qcapi.nasdaq.com/api/quote/BABA/info?assetclass=STOCKS",
+          "status_code": 403,
+          "ok": false,
+          "json_detected": false,
+          "data_keys": [],
+          "message": "HTTP 403"
+        },
+        {
+          "endpoint_name": "info",
+          "url": "https://api.nasdaq.com/api/quote/BABA/info?assetclass=STOCKS",
+          "status_code": 200,
+          "ok": true,
+          "json_detected": true,
+          "data_keys": [
+            "symbol",
+            "companyName",
+            "stockType",
+            "exchange",
+            "isNasdaqListed",
+            "isNasdaq100",
+            "isHeld",
+            "primaryData",
+            "secondaryData",
+            "marketStatus",
+            "assetClass",
+            "keyStats",
+            "notifications"
+          ],
+          "message": "JSON response, rCode=200"
+        },
+        {
+          "endpoint_name": "summary",
+          "url": "https://qcapi.nasdaq.com/api/quote/BABA/summary?assetclass=STOCKS",
+          "status_code": 403,
+          "ok": false,
+          "json_detected": false,
+          "data_keys": [],
+          "message": "HTTP 403"
+        },
+        {
+          "endpoint_name": "summary",
+          "url": "https://api.nasdaq.com/api/quote/BABA/summary?assetclass=STOCKS",
+          "status_code": 200,
+          "ok": true,
+          "json_detected": true,
+          "data_keys": [
+            "symbol",
+            "summaryData",
+            "assetClass",
+            "additionalData",
+            "bidAsk"
+          ],
+          "message": "JSON response, rCode=200"
+        }
+      ],
+      "selector_candidates": {
+        "quote_container": [
+          "div.nsdq-quote-header[data-symbol]",
+          "div.nsdq-quote-header__info-wrapper",
+          "nsdq-quote-header"
+        ],
+        "quote_fallback_api": [
+          "GET https://api.nasdaq.com/api/quote/{SYMBOL}/info?assetclass=stocks",
+          "data.primaryData.lastSalePrice -> price",
+          "data.primaryData.netChange -> change",
+          "data.primaryData.percentageChange -> change_percent"
+        ],
+        "etf_table_heading_text": [
+          "Nasdaq Listed ETFs where {TICKER} is a top 10 holding",
+          "ETFs with {TICKER} as a Top 10 Holding"
+        ],
+        "etf_table_candidate_selectors": [
+          "section:has(h2,h3,h4)",
+          "table",
+          "tr",
+          "td"
+        ]
+      }
+    },
+    {
+      "ticker": "aapl",
+      "page_url": "https://www.nasdaq.com/es/market-activity/stocks/aapl",
+      "page_status_code": 200,
+      "html_size": 285810,
+      "has_quote_component": true,
+      "has_quote_skeleton": true,
+      "has_price_literal": false,
+      "has_etf_heading_in_html": false,
+      "api_settings_hosts": [
+        "https://api.nasdaq.com/api/nordic",
+        "https://qcapi.nasdaq.com/api"
+      ],
+      "discovered_quote_endpoints": [
+        "https://api.nasdaq.com/api/quote/AAPL/info?assetclass=STOCKS",
+        "https://api.nasdaq.com/api/quote/AAPL/summary?assetclass=STOCKS"
+      ],
+      "api_probes": [
+        {
+          "endpoint_name": "info",
+          "url": "https://qcapi.nasdaq.com/api/quote/AAPL/info?assetclass=STOCKS",
+          "status_code": 403,
+          "ok": false,
+          "json_detected": false,
+          "data_keys": [],
+          "message": "HTTP 403"
+        },
+        {
+          "endpoint_name": "info",
+          "url": "https://api.nasdaq.com/api/quote/AAPL/info?assetclass=STOCKS",
+          "status_code": 200,
+          "ok": true,
+          "json_detected": true,
+          "data_keys": [
+            "symbol",
+            "companyName",
+            "stockType",
+            "exchange",
+            "isNasdaqListed",
+            "isNasdaq100",
+            "isHeld",
+            "primaryData",
+            "secondaryData",
+            "marketStatus",
+            "assetClass",
+            "keyStats",
+            "notifications"
+          ],
+          "message": "JSON response, rCode=200"
+        },
+        {
+          "endpoint_name": "summary",
+          "url": "https://qcapi.nasdaq.com/api/quote/AAPL/summary?assetclass=STOCKS",
+          "status_code": 403,
+          "ok": false,
+          "json_detected": false,
+          "data_keys": [],
+          "message": "HTTP 403"
+        },
+        {
+          "endpoint_name": "summary",
+          "url": "https://api.nasdaq.com/api/quote/AAPL/summary?assetclass=STOCKS",
+          "status_code": 200,
+          "ok": true,
+          "json_detected": true,
+          "data_keys": [
+            "symbol",
+            "summaryData",
+            "assetClass",
+            "additionalData",
+            "bidAsk"
+          ],
+          "message": "JSON response, rCode=200"
+        }
+      ],
+      "selector_candidates": {
+        "quote_container": [
+          "div.nsdq-quote-header[data-symbol]",
+          "div.nsdq-quote-header__info-wrapper",
+          "nsdq-quote-header"
+        ],
+        "quote_fallback_api": [
+          "GET https://api.nasdaq.com/api/quote/{SYMBOL}/info?assetclass=stocks",
+          "data.primaryData.lastSalePrice -> price",
+          "data.primaryData.netChange -> change",
+          "data.primaryData.percentageChange -> change_percent"
+        ],
+        "etf_table_heading_text": [
+          "Nasdaq Listed ETFs where {TICKER} is a top 10 holding",
+          "ETFs with {TICKER} as a Top 10 Holding"
+        ],
+        "etf_table_candidate_selectors": [
+          "section:has(h2,h3,h4)",
+          "table",
+          "tr",
+          "td"
+        ]
+      }
+    },
+    {
+      "ticker": "msft",
+      "page_url": "https://www.nasdaq.com/es/market-activity/stocks/msft",
+      "page_status_code": 200,
+      "html_size": 285864,
+      "has_quote_component": true,
+      "has_quote_skeleton": true,
+      "has_price_literal": false,
+      "has_etf_heading_in_html": false,
+      "api_settings_hosts": [
+        "https://api.nasdaq.com/api/nordic",
+        "https://qcapi.nasdaq.com/api"
+      ],
+      "discovered_quote_endpoints": [
+        "https://api.nasdaq.com/api/quote/MSFT/info?assetclass=STOCKS",
+        "https://api.nasdaq.com/api/quote/MSFT/summary?assetclass=STOCKS"
+      ],
+      "api_probes": [
+        {
+          "endpoint_name": "info",
+          "url": "https://qcapi.nasdaq.com/api/quote/MSFT/info?assetclass=STOCKS",
+          "status_code": 403,
+          "ok": false,
+          "json_detected": false,
+          "data_keys": [],
+          "message": "HTTP 403"
+        },
+        {
+          "endpoint_name": "info",
+          "url": "https://api.nasdaq.com/api/quote/MSFT/info?assetclass=STOCKS",
+          "status_code": 200,
+          "ok": true,
+          "json_detected": true,
+          "data_keys": [
+            "symbol",
+            "companyName",
+            "stockType",
+            "exchange",
+            "isNasdaqListed",
+            "isNasdaq100",
+            "isHeld",
+            "primaryData",
+            "secondaryData",
+            "marketStatus",
+            "assetClass",
+            "keyStats",
+            "notifications"
+          ],
+          "message": "JSON response, rCode=200"
+        },
+        {
+          "endpoint_name": "summary",
+          "url": "https://qcapi.nasdaq.com/api/quote/MSFT/summary?assetclass=STOCKS",
+          "status_code": 403,
+          "ok": false,
+          "json_detected": false,
+          "data_keys": [],
+          "message": "HTTP 403"
+        },
+        {
+          "endpoint_name": "summary",
+          "url": "https://api.nasdaq.com/api/quote/MSFT/summary?assetclass=STOCKS",
+          "status_code": 200,
+          "ok": true,
+          "json_detected": true,
+          "data_keys": [
+            "symbol",
+            "summaryData",
+            "assetClass",
+            "additionalData",
+            "bidAsk"
+          ],
+          "message": "JSON response, rCode=200"
+        }
+      ],
+      "selector_candidates": {
+        "quote_container": [
+          "div.nsdq-quote-header[data-symbol]",
+          "div.nsdq-quote-header__info-wrapper",
+          "nsdq-quote-header"
+        ],
+        "quote_fallback_api": [
+          "GET https://api.nasdaq.com/api/quote/{SYMBOL}/info?assetclass=stocks",
+          "data.primaryData.lastSalePrice -> price",
+          "data.primaryData.netChange -> change",
+          "data.primaryData.percentageChange -> change_percent"
+        ],
+        "etf_table_heading_text": [
+          "Nasdaq Listed ETFs where {TICKER} is a top 10 holding",
+          "ETFs with {TICKER} as a Top 10 Holding"
+        ],
+        "etf_table_candidate_selectors": [
+          "section:has(h2,h3,h4)",
+          "table",
+          "tr",
+          "td"
+        ]
+      }
+    }
+  ]
+}

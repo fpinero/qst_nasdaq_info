@@ -8,6 +8,7 @@ This document defines the module conventions for `src/nasdaq_scraper/`.
 - `types.py`: public type contracts (`TypedDict`) for output structures.
 - `exceptions.py`: custom exception hierarchy for scraper failures.
 - `log_config.py`: library logger setup and logger access helpers.
+- `recon.py`: reconnaissance utilities to inspect rendering and discover API endpoints.
 
 ## Naming conventions
 
