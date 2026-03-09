@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qst-nasdaq-info"
+version = "0.1.0"
+description = "Python library to scrape Nasdaq ticker data."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "qst_nasdaq_info maintainers" }
+]
+dependencies = [
+    "beautifulsoup4>=4.12.0",
+    "lxml>=5.0.0",
+    "requests>=2.32.0",
+]
+
+[project.optional-dependencies]
+browser = [
+    "playwright>=1.50.0",
+    "playwright-stealth>=1.0.6",
+]
+dev = [
+    "mypy>=1.15.0",
+    "pytest>=8.3.0",
+    "ruff>=0.11.0",
+]
+
+[project.urls]
+Repository = "https://github.com/fpinero/qst_nasdaq_info"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+nasdaq_scraper = ["py.typed"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
