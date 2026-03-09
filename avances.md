@@ -1,5 +1,33 @@
 Fecha: 2026-03-09
 Hecho:
+- Se ajustó el hito 4 con workaround explícito para tablas ETF renderizadas por JavaScript.
+- Se instalaron dependencias browser en entorno virtual (`.venv`) y navegadores Playwright (`chromium`, `firefox`) para validar extracción dinámica real.
+- Se detectó y resolvió incompatibilidad de `playwright-stealth` usando API moderna basada en `Stealth().apply_stealth_sync`.
+- Se añadió fallback de navegador en Playwright (`chromium` -> `firefox`) para evitar `ERR_HTTP2_PROTOCOL_ERROR` observado con Chromium contra Nasdaq.
+- Se implementó extracción de ETFs en `src/nasdaq_scraper/etf.py`.
+- Se añadieron localizadores para los dos bloques de tabla ETF dentro del componente `jupiter22-etf-stocks-holdings-bar-chart-table`.
+- Se implementó extracción de filas (`symbol`, `name`, `weighting`) ignorando la columna de cambio de precio cuando existe.
+- Se integró unificación y deduplicación por `symbol+name`, preservando orden de aparición.
+- Se conectó la extracción ETF en `get_ticker_data` con estrategia Playwright-first para esperar filas hidratadas y fallback HTTP si Playwright no está disponible o no devuelve datos.
+- Se validó extracción end-to-end con resultados reales de ETFs para `baba`, `aapl` y `msft`.
+- Se mantiene retorno seguro con `etfs: []` cuando no se puede obtener contenido de tablas.
+Archivos tocados:
+- src/nasdaq_scraper/etf.py
+- src/nasdaq_scraper/scraper.py
+- src/nasdaq_scraper/__init__.py
+- docs/package_architecture.md
+- TODO.md
+- avances.md
+Decisiones:
+- Se usa parsing basado en clases CSS estables del componente ETF para minimizar dependencia de texto exacto localizado.
+- Se mantiene compatibilidad con ambos layouts de tabla (con y sin columna de 100-day change).
+- Se adopta Playwright-first para ETF, dado que el HTML inicial suele traer skeleton sin datos finales.
+- Se usa Firefox como segundo motor automático cuando Chromium falla por protocolo HTTP/2 en este entorno.
+Deuda técnica / pendientes:
+- Añadir pruebas unitarias para el parser ETF con fixtures de HTML renderizado.
+
+Fecha: 2026-03-09
+Hecho:
 - Se conectó la capa de transporte del hito 2 al flujo de extracción de cotización del hito 3.
 - Se implementó `src/nasdaq_scraper/parsing.py` con normalizadores `parse_money`, `parse_change` y `parse_percent`.
 - Se implementó `src/nasdaq_scraper/scraper.py` con `get_ticker_data(ticker)` usando `NasdaqHttpClient` contra `api.nasdaq.com`.

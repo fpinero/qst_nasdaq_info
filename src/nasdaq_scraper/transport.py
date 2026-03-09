@@ -261,6 +261,7 @@ def fetch_with_playwright_fallback(
     *,
     wait_for_selector: str = "body",
     wait_timeout_ms: int = 15000,
+    wait_for_etf_rows: bool = False,
 ) -> str:
     """Fetch page HTML using Playwright with rotating browser identifiers.
 
@@ -283,32 +284,88 @@ def fetch_with_playwright_fallback(
             "Install optional dependency: pip install 'qst-nasdaq-info[browser]'"
         ) from error
 
-    stealth_sync = None
+    stealth_apply = None
     try:
         stealth_module = importlib.import_module("playwright_stealth")
-        stealth_sync = getattr(stealth_module, "stealth_sync")
+        legacy = getattr(stealth_module, "stealth_sync", None)
+        if callable(legacy):
+            stealth_apply = legacy
+        else:
+            stealth_class = getattr(stealth_module, "Stealth", None)
+            if stealth_class is not None:
+                stealth_instance = stealth_class()
+                stealth_apply = getattr(stealth_instance, "apply_stealth_sync", None)
     except ModuleNotFoundError:
-        stealth_sync = None
+        stealth_apply = None
 
+    browser_errors: list[str] = []
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=True)
-        context = browser.new_context(
-            user_agent=user_agent,
-            locale=locale,
-            timezone_id=timezone,
-            viewport={"width": viewport_width, "height": viewport_height},
-            screen={"width": viewport_width, "height": viewport_height},
-        )
-        page = context.new_page()
-        if stealth_sync is not None:
-            stealth_sync(page)
+        for browser_name in ("chromium", "firefox"):
+            browser_engine = getattr(playwright, browser_name)
+            browser = None
+            context = None
+            try:
+                browser = browser_engine.launch(headless=True)
+                context = browser.new_context(
+                    user_agent=user_agent,
+                    locale=locale,
+                    timezone_id=timezone,
+                    viewport={"width": viewport_width, "height": viewport_height},
+                    screen={"width": viewport_width, "height": viewport_height},
+                )
+                page = context.new_page()
+                if callable(stealth_apply):
+                    stealth_apply(page)
 
-        page.goto(url, wait_until="domcontentloaded", timeout=wait_timeout_ms)
-        page.wait_for_selector(wait_for_selector, timeout=wait_timeout_ms)
-        page.wait_for_load_state("networkidle", timeout=wait_timeout_ms)
-        html = page.content()
+                page.goto(url, wait_until="domcontentloaded", timeout=wait_timeout_ms)
+                page.wait_for_selector(wait_for_selector, timeout=wait_timeout_ms)
 
-        context.close()
-        browser.close()
+                if wait_for_etf_rows:
+                    page.wait_for_selector(
+                        ".jupiter22-etf-stocks-holdings-bar-chart-table",
+                        timeout=wait_timeout_ms,
+                    )
+                    page.locator(
+                        ".jupiter22-etf-stocks-holdings-bar-chart-table"
+                    ).first.scroll_into_view_if_needed()
+                    page.wait_for_function(
+                        """
+                        () => {
+                            const symbols = Array.from(
+                                document.querySelectorAll(
+                                    '.jupiter22-etf-stocks-holdings-bar-chart-table__symbol'
+                                )
+                            );
+                            return symbols.some((element) => {
+                                const value = element.textContent || '';
+                                return value.trim().length > 0;
+                            });
+                        }
+                        """,
+                        timeout=wait_timeout_ms,
+                    )
 
-    return html
+                page.wait_for_load_state("networkidle", timeout=wait_timeout_ms)
+                html = page.content()
+
+                context.close()
+                browser.close()
+                return html
+            except Exception as error:  # pragma: no cover - depends on optional runtime tooling
+                browser_errors.append(f"{browser_name}: {error}")
+                try:
+                    if context is not None:
+                        context.close()
+                except Exception:
+                    pass
+                try:
+                    if browser is not None:
+                        browser.close()
+                except Exception:
+                    pass
+
+    joined_errors = " | ".join(browser_errors) or "unknown Playwright error"
+    raise ConnectionError(f"Playwright fallback failed for {url}: {joined_errors}")
+
+    # Unreachable, kept for type checkers.
+    return ""

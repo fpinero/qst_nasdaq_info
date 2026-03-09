@@ -36,13 +36,13 @@
 
 ## hito 4. parsing de tablas ETF y unificación
 
-- [ ] Implementar localizador de tabla con encabezado exacto `Nasdaq Listed ETFs where {TICKER} is a top 10 holding` (`feature/find-primary-etf-table`).
-- [ ] Implementar localizador de tabla alternativa de encabezado similar `ETFs with {TICKER} as a Top 10 Holding` (`feature/find-secondary-etf-table`).
-- [ ] Implementar extractor de filas para `symbol`, `name`, `weighting` en la primera tabla (`feature/extract-etf-rows-primary`).
-- [ ] Implementar extractor de filas para la segunda tabla ignorando `100 Day Price Change (%)` (`feature/extract-etf-rows-secondary`).
-- [ ] Unificar filas de ambas tablas en una sola lista `etfs`, preservando orden estable (`feature/merge-etf-lists`).
-- [ ] Implementar deduplicación opcional por `symbol+name` si aparecen repetidos en ambas tablas (`feature/dedupe-etfs`).
-- [ ] Manejar caso sin ETFs, devolviendo `etfs: []` sin lanzar error (`feature/empty-etf-list-handling`).
+- [x] Implementar localizador de tabla con encabezado exacto `Nasdaq Listed ETFs where {TICKER} is a top 10 holding` (`feature/find-primary-etf-table`).
+- [x] Implementar localizador de tabla alternativa de encabezado similar `ETFs with {TICKER} as a Top 10 Holding` (`feature/find-secondary-etf-table`).
+- [x] Implementar extractor de filas para `symbol`, `name`, `weighting` en la primera tabla (`feature/extract-etf-rows-primary`).
+- [x] Implementar extractor de filas para la segunda tabla ignorando `100 Day Price Change (%)` (`feature/extract-etf-rows-secondary`).
+- [x] Unificar filas de ambas tablas en una sola lista `etfs`, preservando orden estable (`feature/merge-etf-lists`).
+- [x] Implementar deduplicación opcional por `symbol+name` si aparecen repetidos en ambas tablas (`feature/dedupe-etfs`).
+- [x] Manejar caso sin ETFs, devolviendo `etfs: []` sin lanzar error (`feature/empty-etf-list-handling`).
 
 ## hito 5. API pública de la librería
 
