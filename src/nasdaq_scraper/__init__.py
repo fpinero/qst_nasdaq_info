@@ -1,5 +1,6 @@
 """Public package surface for the Nasdaq scraper library."""
 
+from nasdaq_scraper.etf import extract_etfs_from_html
 from nasdaq_scraper.exceptions import ConnectionError, ElementNotFoundError, ParsingError, ScrapingError
 from nasdaq_scraper.log_config import configure_library_logger, get_logger
 from nasdaq_scraper.parsing import parse_change, parse_money, parse_percent
@@ -18,6 +19,7 @@ __all__ = [
     "TickerData",
     "TransportConfig",
     "configure_library_logger",
+    "extract_etfs_from_html",
     "fetch_with_playwright_fallback",
     "get_ticker_data",
     "get_logger",

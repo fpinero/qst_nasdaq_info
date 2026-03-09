@@ -40,6 +40,12 @@ This strategy is based on the milestone 1 reconnaissance script (`scripts/recon_
 - Promote discovered endpoint(s) to primary source for ETF rows.
 - Keep HTML selector fallback to handle endpoint regressions.
 
+Workaround implemented:
+
+- Use Playwright-first extraction for ETF tables because the initial HTML often includes only skeleton rows.
+- Wait explicitly for non-empty `.jupiter22-etf-stocks-holdings-bar-chart-table__symbol` nodes before parsing table rows.
+- Keep static HTML fallback and return `etfs: []` safely if dynamic extraction cannot run.
+
 ## Anti-blocking posture to apply in hito 2
 
 - Rotate User-Agent and full browser-like headers.

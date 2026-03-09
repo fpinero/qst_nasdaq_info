@@ -11,6 +11,7 @@ This document defines the module conventions for `src/nasdaq_scraper/`.
 - `recon.py`: reconnaissance utilities to inspect rendering and discover API endpoints.
 - `transport.py`: resilient HTTP and Playwright fallback transport with anti-blocking primitives.
 - `parsing.py`: reusable numeric parsers for money, net change, and percentages.
+- `etf.py`: ETF table extraction, merge, and deduplication logic.
 - `scraper.py`: high-level quote extraction flow and `get_ticker_data` public entrypoint.
 
 ## Naming conventions
