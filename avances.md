@@ -1,5 +1,22 @@
 Fecha: 2026-03-09
 Hecho:
+- Se inició y completó el hito 8 de estrategia de ramas, commits y PRs.
+- Se creó `docs/workflow_standards.md` con convención de ramas `feature/*` y `fix/*`, plantilla de commits en inglés y criterios de calidad para PR.
+- Se enlazó el estándar de workflow desde `README.md`.
+- Se actualizaron las tareas del hito 8 en `TODO.md` como completadas.
+Archivos tocados:
+- docs/workflow_standards.md
+- README.md
+- TODO.md
+- avances.md
+Decisiones:
+- Formalizar el flujo que ya se venía aplicando durante la construcción de la librería.
+- Mantener PRs pequeños, con evidencia de validación y sin mezclar cambios no relacionados.
+Deuda técnica / pendientes:
+- No hay pendientes funcionales de hitos definidos en `TODO.md`.
+
+Fecha: 2026-03-09
+Hecho:
 - Se inició hito 7 y se completaron entregables de documentación y experiencia de uso.
 - Se reescribió `README.md` en inglés con instalación, setup de Playwright, uso, contrato de salida, errores y troubleshooting.
 - Se añadió `example.py` para ejecutar `get_ticker_data("baba")` y mostrar JSON formateado.
