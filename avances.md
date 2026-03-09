@@ -1,5 +1,27 @@
 Fecha: 2026-03-09
 Hecho:
+- Se inició y completó la base técnica del hito 2 en `src/nasdaq_scraper/transport.py`.
+- Se implementó rotación de User-Agent y cabeceras browser-like mediante `UserAgentRotator` y `build_browser_headers`.
+- Se implementó cliente HTTP resiliente `NasdaqHttpClient` con timeout, retries, backoff exponencial, jitter y delay aleatorio entre peticiones.
+- Se añadió detección de bloqueo por códigos HTTP y patrones en cuerpo de respuesta (`detect_blocking`).
+- Se implementó fallback opcional con Playwright (`fetch_with_playwright_fallback`) con variación de `viewport`, `locale`, `timezone` y `user_agent`.
+- Se integró soporte opcional de stealth (`playwright-stealth`) cuando la dependencia está disponible.
+- Se expuso configuración parametrizable mediante `TransportConfig` para evitar valores hardcodeados en el flujo de scraping.
+Archivos tocados:
+- src/nasdaq_scraper/transport.py
+- src/nasdaq_scraper/__init__.py
+- docs/package_architecture.md
+- TODO.md
+- avances.md
+Decisiones:
+- La capa de transporte se implementa con `urllib` estándar para no depender de instalación runtime de terceros en esta etapa.
+- Playwright se mantiene como fallback opcional y desacoplado, activable solo cuando se necesite extracción dinámica.
+- La detección de bloqueo se modela como señal explícita para reintento controlado y observabilidad.
+Deuda técnica / pendientes:
+- Conectar `NasdaqHttpClient` y fallback Playwright con el pipeline funcional de `get_ticker_data` en hitos 3 a 5.
+
+Fecha: 2026-03-09
+Hecho:
 - Se completó el hito 1 con reconnaissance automatizada para `baba`, `aapl` y `msft`.
 - Se implementó `src/nasdaq_scraper/recon.py` para inspección de renderizado, extracción de `ApiSettings` embebidos y sondeo de endpoints de quote.
 - Se añadió `scripts/recon_nasdaq.py` para generar reportes reproducibles en JSON y Markdown.

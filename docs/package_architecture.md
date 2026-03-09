@@ -9,6 +9,7 @@ This document defines the module conventions for `src/nasdaq_scraper/`.
 - `exceptions.py`: custom exception hierarchy for scraper failures.
 - `log_config.py`: library logger setup and logger access helpers.
 - `recon.py`: reconnaissance utilities to inspect rendering and discover API endpoints.
+- `transport.py`: resilient HTTP and Playwright fallback transport with anti-blocking primitives.
 
 ## Naming conventions
 
