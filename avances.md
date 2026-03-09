@@ -1,5 +1,26 @@
 Fecha: 2026-03-09
 Hecho:
+- Se conectó la capa de transporte del hito 2 al flujo de extracción de cotización del hito 3.
+- Se implementó `src/nasdaq_scraper/parsing.py` con normalizadores `parse_money`, `parse_change` y `parse_percent`.
+- Se implementó `src/nasdaq_scraper/scraper.py` con `get_ticker_data(ticker)` usando `NasdaqHttpClient` contra `api.nasdaq.com`.
+- Se añadió validación de entrada de ticker, validación de presencia de campos requeridos y validación de finitud numérica.
+- Se expuso la API pública y parsers desde `src/nasdaq_scraper/__init__.py`.
+Archivos tocados:
+- src/nasdaq_scraper/parsing.py
+- src/nasdaq_scraper/scraper.py
+- src/nasdaq_scraper/__init__.py
+- docs/package_architecture.md
+- TODO.md
+- avances.md
+Decisiones:
+- Se adopta `api.nasdaq.com/api/quote/{SYMBOL}/info?assetclass=STOCKS` como fuente primaria para `price`, `change` y `change_percent`.
+- Se devuelve `etfs: []` como placeholder controlado hasta completar los hitos de extracción ETF.
+- El flujo lanza excepciones específicas (`ElementNotFoundError`, `ParsingError`) cuando faltan campos o fallan conversiones.
+Deuda técnica / pendientes:
+- Implementar extracción y unificación de tablas ETF (hito 4).
+
+Fecha: 2026-03-09
+Hecho:
 - Se inició y completó la base técnica del hito 2 en `src/nasdaq_scraper/transport.py`.
 - Se implementó rotación de User-Agent y cabeceras browser-like mediante `UserAgentRotator` y `build_browser_headers`.
 - Se implementó cliente HTTP resiliente `NasdaqHttpClient` con timeout, retries, backoff exponencial, jitter y delay aleatorio entre peticiones.

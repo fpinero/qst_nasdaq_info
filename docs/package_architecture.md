@@ -10,6 +10,8 @@ This document defines the module conventions for `src/nasdaq_scraper/`.
 - `log_config.py`: library logger setup and logger access helpers.
 - `recon.py`: reconnaissance utilities to inspect rendering and discover API endpoints.
 - `transport.py`: resilient HTTP and Playwright fallback transport with anti-blocking primitives.
+- `parsing.py`: reusable numeric parsers for money, net change, and percentages.
+- `scraper.py`: high-level quote extraction flow and `get_ticker_data` public entrypoint.
 
 ## Naming conventions
 
