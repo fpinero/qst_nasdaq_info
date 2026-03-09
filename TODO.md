@@ -10,10 +10,10 @@
 
 ## hito 1. reconocimiento del sitio Nasdaq y estrategia de extracción
 
-- [ ] Implementar script de reconnaissance para `baba`, `aapl`, `msft` y registrar evidencias de renderizado (HTML estático vs JS) (`feature/recon-rendering-check`).
-- [ ] Inspeccionar tráfico de red y verificar si existe endpoint JSON utilizable para precio y tablas ETF (`feature/recon-api-discovery`).
-- [ ] Identificar y documentar selectores candidatos para precio, cambio, porcentaje y encabezados de tablas (`feature/recon-selector-map`).
-- [ ] Definir estrategia final en documento técnico: `requests+bs4` si alcanza, `Playwright` como fallback si falta contenido (`feature/decide-scraping-strategy`).
+- [x] Implementar script de reconnaissance para `baba`, `aapl`, `msft` y registrar evidencias de renderizado (HTML estático vs JS) (`feature/recon-rendering-check`).
+- [x] Inspeccionar tráfico de red y verificar si existe endpoint JSON utilizable para precio y tablas ETF (`feature/recon-api-discovery`).
+- [x] Identificar y documentar selectores candidatos para precio, cambio, porcentaje y encabezados de tablas (`feature/recon-selector-map`).
+- [x] Definir estrategia final en documento técnico: `requests+bs4` si alcanza, `Playwright` como fallback si falta contenido (`feature/decide-scraping-strategy`).
 
 ## hito 2. capa HTTP o browser con evasión de bloqueos
 
