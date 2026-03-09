@@ -1,5 +1,32 @@
 Fecha: 2026-03-09
 Hecho:
+- Se inició y completó el hito 6 con una base de calidad y pruebas para el scraper.
+- Se añadieron tests unitarios de parsing numérico en `tests/unit/test_parsing.py`.
+- Se añadieron tests unitarios del parser ETF con fixture hidratada en `tests/unit/test_etf_parser.py` y `tests/fixtures/etf_tables_hydrated.html`.
+- Se añadieron tests de resiliencia de red y anti-bloqueo para transporte en `tests/unit/test_transport.py`.
+- Se añadieron tests de integración online en `tests/integration/test_live_tickers.py` para `baba`, `aapl`, `msft` y validación del contrato `etfs` lista.
+- Se añadió configuración de pytest en `pyproject.toml` (testpaths y marker `integration`).
+- Se ejecutaron gates de calidad en `.venv`: ruff, mypy, tests unitarios e integración online.
+Archivos tocados:
+- tests/unit/test_parsing.py
+- tests/unit/test_etf_parser.py
+- tests/unit/test_transport.py
+- tests/unit/test_scraper_contract.py
+- tests/integration/test_live_tickers.py
+- tests/fixtures/etf_tables_hydrated.html
+- pyproject.toml
+- src/nasdaq_scraper/transport.py
+- TODO.md
+- avances.md
+Decisiones:
+- Mantener tests online protegidos por `RUN_LIVE_TESTS=1` para evitar flakiness en ejecuciones locales por defecto.
+- Usar aserciones estables de estructura y tipos en integración, evitando checks frágiles de valores absolutos.
+- Mantener quality gates mínimos obligatorios: `ruff check`, `mypy`, y `pytest`.
+Deuda técnica / pendientes:
+- Añadir `pytest-cov` y umbral formal de cobertura cuando se cierre hito 7.
+
+Fecha: 2026-03-09
+Hecho:
 - Se inició hito 5 y se consolidó `get_ticker_data` como API pública estable del paquete.
 - Se mejoraron mensajes de error accionables para fallos de red y payload (`ConnectionError`, `ElementNotFoundError`, `ParsingError`).
 - Se documentó explícitamente el contrato público en `docs/public_api_contract.md`.

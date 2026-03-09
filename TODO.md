@@ -54,12 +54,12 @@
 
 ## hito 6. calidad y pruebas
 
-- [ ] Crear suite unitaria para normalizadores y parseadores numéricos (`feature/unit-tests-normalizers`).
-- [ ] Crear tests de parsing HTML con fixtures de estructura real para cotización y ETFs (`feature/unit-tests-html-parsers`).
-- [ ] Crear tests de integración online para `baba`, `aapl`, `msft` con aserciones mínimas estables (`feature/integration-tests-tickers`).
-- [ ] Crear test de regresión para caso de página sin tablas ETF (`feature/integration-test-no-etfs`).
-- [ ] Crear test de resiliencia de red: timeout, retry agotado, bloqueo detectado (`feature/network-error-tests`).
-- [ ] Configurar lint, type-check y cobertura mínima para merge (`feature/quality-gates`).
+- [x] Crear suite unitaria para normalizadores y parseadores numéricos (`feature/unit-tests-normalizers`).
+- [x] Crear tests de parsing HTML con fixtures de estructura real para cotización y ETFs (`feature/unit-tests-html-parsers`).
+- [x] Crear tests de integración online para `baba`, `aapl`, `msft` con aserciones mínimas estables (`feature/integration-tests-tickers`).
+- [x] Crear test de regresión para caso de página sin tablas ETF (`feature/integration-test-no-etfs`).
+- [x] Crear test de resiliencia de red: timeout, retry agotado, bloqueo detectado (`feature/network-error-tests`).
+- [x] Configurar lint, type-check y cobertura mínima para merge (`feature/quality-gates`).
 
 ## hito 7. entregables finales y experiencia de uso
 
